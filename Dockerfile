@@ -7,19 +7,19 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 WORKDIR /source
 
 # Copy project files
-COPY ["Biletado.api/Biletado.api.csproj", "Biletado.api/"]
+COPY ["Biletado.Api/Biletado.Api.csproj", "Biletado.Api/"]
 COPY ["Biletado.Tests/Biletado.Tests.csproj", "Biletado.Tests/"]
 
 # Restore dependencies based on architecture to cache packages per platform
 ARG TARGETARCH
 RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
-    dotnet restore "Biletado.api/Biletado.api.csproj" --arch ${TARGETARCH/amd64/x64}
+    dotnet restore "Biletado.Api/Biletado.Api.csproj" --arch ${TARGETARCH/amd64/x64}
 
 # Copy the entire source
 COPY . .
 
 # Set the working directory to the project folder
-WORKDIR /source/Biletado.api
+WORKDIR /source/Biletado.Api
 
 # Build and publish the application
 ARG BUILD_CONFIGURATION=Release
@@ -40,4 +40,4 @@ USER root
 EXPOSE 8080
 
 # Start the application
-ENTRYPOINT ["dotnet", "Biletado.api.dll"]
+ENTRYPOINT ["dotnet", "Biletado.Api.dll"]
