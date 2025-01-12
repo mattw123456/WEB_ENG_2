@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35201.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Api", "Biletado.Api\Biletado.Api.csproj", "{7B43E660-44F2-48FE-B943-1B13EB47639B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Tests", "Biletado.Tests\Biletado.Tests.csproj", "{F1914F8C-2BFF-466D-BEB1-AE29170AA677}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B43E660-44F2-48FE-B943-1B13EB47639B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B43E660-44F2-48FE-B943-1B13EB47639B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B43E660-44F2-48FE-B943-1B13EB47639B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B43E660-44F2-48FE-B943-1B13EB47639B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1914F8C-2BFF-466D-BEB1-AE29170AA677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1914F8C-2BFF-466D-BEB1-AE29170AA677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1914F8C-2BFF-466D-BEB1-AE29170AA677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1914F8C-2BFF-466D-BEB1-AE29170AA677}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E81F0671-6545-4049-AB64-5693D3873C3E}
+	EndGlobalSection
+EndGlobal
