@@ -30,5 +30,5 @@ jobs:
       - name: Build and push the api image for amd
         run: |
           docker login --username mattw123456 --password ${{ secrets.GH_PAT }} ghcr.io
-          docker build . --tag ghcr.io/mattw123456/biletado-api-amd:latest --platform=linux/amd64
-          docker push ghcr.io/mattw123456/biletado-api-amd:latest
+          docker build . --tag ghcr.io/mattw123456/biletado-api:latest --platform=linux/amd64
+          docker push ghcr.io/mattw123456/biletado-api:latest
