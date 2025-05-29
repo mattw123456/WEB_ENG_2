@@ -1,4 +1,4 @@
-using Biletado.Api.Buildings;
+using Biletado.Api.Domain.Building;
 using Moq;
 
 namespace Biletado.Tests

@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Biletado.Api.Adapters.Database;
+using Biletado.Api.Domain.Building;
+using Microsoft.EntityFrameworkCore;
 
-namespace Biletado.Api.Buildings
+namespace Biletado.Api.Adapters.Repositories
 {
     public class BuildingService : IBuildingService
     {

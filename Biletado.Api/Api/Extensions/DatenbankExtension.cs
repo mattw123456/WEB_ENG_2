@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Biletado.Api.Adapters.Database;
+using Microsoft.EntityFrameworkCore;
 
-namespace Biletado.Api
+namespace Biletado.Api.Api.Extensions
 {
     public static class DatenbankExtension
     {

@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Biletado.Api.Status
 {

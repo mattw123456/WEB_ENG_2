@@ -1,4 +1,4 @@
-﻿namespace Biletado.Api.Buildings
+﻿namespace Biletado.Api.Domain.Building
 {
     public class Building
     {

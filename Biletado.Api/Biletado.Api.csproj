@@ -16,4 +16,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\Status\" />
+    <Folder Include="Domain\Storey\" />
+    <Folder Include="Domain\Room\" />
+    <Folder Include="Kustomize\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Tests\" />
+  </ItemGroup>
+
 </Project>

@@ -1,15 +1,16 @@
-
-using Biletado.Api.Buildings;
+using Biletado.Api.Api.Endpunkte;
+using Biletado.Api.Api.Extensions;
 using Biletado.Api.Room;
 using Biletado.Api.Status;
 using Biletado.Api.Storey;
 
-namespace Biletado.Api
+namespace Biletado.Api.Api
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Configuration.AddEnvironmentVariables();
@@ -36,17 +37,8 @@ namespace Biletado.Api
             builder.Services.AddApplicationServices();
             builder.Services.AddPostgresDbContext(builder.Configuration);
 
-            // Add authentication services
-            await builder.Services.AddJwtAuthenticationAsync(
-                builder.Configuration,
-                builder.Environment
-            );
-
-            // Add authorization services
-            builder.Services.AddAuthorization();
 
             var app = builder.Build();
-
 
 
             // Configure the HTTP request pipeline.
@@ -55,9 +47,6 @@ namespace Biletado.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            app.UseMiddleware<UnauthorizedMiddleware>();
-            app.UseAuthorization();
 
             app.UseCors(myAllowSpecificOrigins);
             app.UseHttpsRedirection();

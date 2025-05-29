@@ -1,6 +1,5 @@
-﻿using Biletado.Api.Buildings;
+﻿using Biletado.Api.Domain.Building;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Biletado.Api.Storey
 {
@@ -70,8 +69,7 @@ namespace Biletado.Api.Storey
                 )
                 .WithName("CreateStorey")
                 .WithOpenApi()
-                .WithTags("Storey")
-                .RequireAuthorization();
+                .WithTags("Storey");
 
             app.MapGet(
                     "/api/v3/assets/storeys/{id}",
@@ -145,8 +143,7 @@ namespace Biletado.Api.Storey
                 )
                 .WithName("UpdateStorey")
                 .WithOpenApi()
-                .WithTags("Storey")
-                .RequireAuthorization();
+                .WithTags("Storey");
 
             app.MapDelete(
                     "/api/v3/assets/storeys/{id}",
@@ -173,8 +170,7 @@ namespace Biletado.Api.Storey
                 )
                 .WithName("DeleteStorey")
                 .WithOpenApi()
-                .WithTags("Storey")
-                .RequireAuthorization();
+                .WithTags("Storey");
         }
     }
 }

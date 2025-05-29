@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Biletado.Api.Adapters.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Biletado.Api.Status
 {

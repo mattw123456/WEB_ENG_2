@@ -1,6 +1,5 @@
 ﻿using Biletado.Api.Storey;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Biletado.Api.Room
 {
@@ -34,8 +33,7 @@ namespace Biletado.Api.Room
                 )
                 .WithName("CreateRoom")
                 .WithOpenApi()
-                .WithTags("Room")
-                .RequireAuthorization();
+                .WithTags("Room");
 
             app.MapGet(
                     $"{ApiRoutes.Rooms}/{{id}}",
@@ -51,8 +49,7 @@ namespace Biletado.Api.Room
                 )
                 .WithName("UpdateRoom")
                 .WithOpenApi()
-                .WithTags("Room")
-                .RequireAuthorization();
+                .WithTags("Room");
 
             app.MapDelete(
                     $"{ApiRoutes.Rooms}/{{id}}",
@@ -60,8 +57,7 @@ namespace Biletado.Api.Room
                 )
                 .WithName("DeleteRoom")
                 .WithOpenApi()
-                .WithTags("Room")
-                .RequireAuthorization();
+                .WithTags("Room");
         }
 
         private static async Task<IResult> GetAllRoomsAsync(

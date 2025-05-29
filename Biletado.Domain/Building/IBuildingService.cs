@@ -1,4 +1,4 @@
-﻿namespace Biletado.Api.Buildings
+﻿namespace Biletado.Domain.Building
 {
     public interface IBuildingService
     {

@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+﻿using Biletado.Api.Adapters.Repositories;
+using Biletado.Api.Domain.Building;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Biletado.Api.Buildings
+namespace Biletado.Api.Api.Endpunkte
 {
     public static class BuildingEndpunkte
     {
@@ -46,12 +47,10 @@ namespace Biletado.Api.Buildings
                     async (
                         [FromServices] IBuildingService service,
                         [FromBody] Building building,
-                        ClaimsPrincipal user,
                         ILogger<BuildingService> logger
                     ) =>
                     {
-                        var userId = user.Claims.FirstOrDefault(c => c.Type == "sid")?.Value;
-                        logger.LogInformation("User {userId} creates a building: {@building}", userId, building);
+                        logger.LogInformation("User creates a building: {@building}", building);
 
                         if (building == null)
                             return Results.BadRequest("Building data is required.");
@@ -63,7 +62,7 @@ namespace Biletado.Api.Buildings
 
                         var createdBuilding = await service.CreateBuildingAsync(building);
 
-                        logger.LogInformation("Building created with ID {id} by user {userId}", createdBuilding.id, userId);
+                        logger.LogInformation("Building created with ID {id} by user", createdBuilding.id);
 
                         return Results.Created(
                             $"/api/v3/assets/buildings/{createdBuilding.id}",
@@ -73,8 +72,7 @@ namespace Biletado.Api.Buildings
                 )
                 .WithName("CreateBuilding")
                 .WithOpenApi()
-                .WithTags("Buildings")
-                .RequireAuthorization();
+                .WithTags("Buildings");
 
             app.MapPut(
                     "/api/v3/assets/buildings/{id}",
@@ -82,59 +80,51 @@ namespace Biletado.Api.Buildings
                         [FromServices] IBuildingService service,
                         Guid id,
                         [FromBody] Building building,
-                        ClaimsPrincipal user,
                         ILogger<BuildingService> logger
                     ) =>
                     {
-                        var userId = user.Claims.FirstOrDefault(c => c.Type == "sid")?.Value;
-                        logger.LogInformation("User {userId} updates building with ID {id}: {@building}", userId, id, building);
+                        logger.LogInformation("User updates building with ID {id}: {@building}", id, building);
 
                         var (updatedBuilding, isCreated) = await service.UpdateBuildingAsync(building, id);
 
                         if (isCreated)
                         {
-                            logger.LogInformation("Building with ID {id} was created by user {userId}", id, userId);
+                            logger.LogInformation("Building with ID {id} was created by user", id);
                             return Results.Created($"/api/v3/assets/buildings/{updatedBuilding.id}", updatedBuilding);
                         }
 
-                        logger.LogInformation("Building with ID {id} was updated by user {userId}", id, userId);
+                        logger.LogInformation("Building with ID {id} was updated by user", id);
                         return Results.Ok(updatedBuilding);
                     }
                 )
                 .WithName("UpdateBuilding")
                 .WithOpenApi()
-                .WithTags("Buildings")
-                .RequireAuthorization();
+                .WithTags("Buildings");
 
             app.MapDelete(
                     "/api/v3/assets/buildings/{id}",
                     async (
                         [FromServices] IBuildingService service,
                         Guid id,
-                        ClaimsPrincipal user,
                         ILogger<BuildingService> logger,
                         [FromQuery] bool permanent = false
                     ) =>
                     {
-                        var userId = user.Claims.FirstOrDefault(c => c.Type == "sid")?.Value;
-                        logger.LogInformation("User {userId} deletes building with ID {id} (permanent={permanent})", userId, id, permanent);
-
                         var (success, errorMessage) = await service.DeleteBuildingAsync(id, permanent);
 
                         if (success)
                         {
-                            logger.LogInformation("Building with ID {id} successfully deleted by user {userId}", id, userId);
+                            logger.LogInformation("Building with ID {id} successfully deleted", id);
                             return Results.NoContent();
                         }
 
-                        logger.LogWarning("Failed to delete building with ID {id} by user {userId}: {errorMessage}", id, userId, errorMessage);
+                        logger.LogWarning("Failed to delete building with ID {id}: {errorMessage}", id, errorMessage);
                         return Results.BadRequest(new { Error = errorMessage });
                     }
                 )
                 .WithName("DeleteBuilding")
                 .WithOpenApi()
-                .WithTags("Buildings")
-                .RequireAuthorization();
+                .WithTags("Buildings");
         }
     }
 }

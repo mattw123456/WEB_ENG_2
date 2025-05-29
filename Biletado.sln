@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Api", "Biletado.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Tests", "Biletado.Tests\Biletado.Tests.csproj", "{F1914F8C-2BFF-466D-BEB1-AE29170AA677}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Domain", "Biletado.Domain\Biletado.Domain.csproj", "{7881099C-A767-40A0-8551-12CD2D96C695}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F1914F8C-2BFF-466D-BEB1-AE29170AA677}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1914F8C-2BFF-466D-BEB1-AE29170AA677}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1914F8C-2BFF-466D-BEB1-AE29170AA677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7881099C-A767-40A0-8551-12CD2D96C695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7881099C-A767-40A0-8551-12CD2D96C695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7881099C-A767-40A0-8551-12CD2D96C695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7881099C-A767-40A0-8551-12CD2D96C695}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
-﻿using Biletado.Api.Buildings;
+﻿using Biletado.Api.Domain.Building;
 using Microsoft.EntityFrameworkCore;
 
-namespace Biletado.Api
+namespace Biletado.Api.Adapters.Database
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
