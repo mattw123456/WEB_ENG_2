@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Tests", "Biletado.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Domain", "Biletado.Domain\Biletado.Domain.csproj", "{7881099C-A767-40A0-8551-12CD2D96C695}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Application", "Biletado.Application\Biletado.Application.csproj", "{7ECFD7FB-BF2D-48FD-91CE-80BF7B5F5920}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletado.Main", "Biletado.Main\Biletado.Main.csproj", "{0D55054A-2A4C-42A2-8268-F61190359D01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{7881099C-A767-40A0-8551-12CD2D96C695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7881099C-A767-40A0-8551-12CD2D96C695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7881099C-A767-40A0-8551-12CD2D96C695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ECFD7FB-BF2D-48FD-91CE-80BF7B5F5920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECFD7FB-BF2D-48FD-91CE-80BF7B5F5920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECFD7FB-BF2D-48FD-91CE-80BF7B5F5920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ECFD7FB-BF2D-48FD-91CE-80BF7B5F5920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D55054A-2A4C-42A2-8268-F61190359D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D55054A-2A4C-42A2-8268-F61190359D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D55054A-2A4C-42A2-8268-F61190359D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D55054A-2A4C-42A2-8268-F61190359D01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
