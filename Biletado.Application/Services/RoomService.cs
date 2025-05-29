@@ -1,4 +1,5 @@
-﻿using Biletado.Api.Adapters.Database;
+﻿using Biletado.Adapters.Datenbank;
+using Biletado.Domain.Room;
 using Microsoft.EntityFrameworkCore;
 
 namespace Biletado.Application.Services

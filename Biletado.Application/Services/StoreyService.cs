@@ -1,5 +1,5 @@
-﻿using Biletado.Api.Adapters.Database;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Biletado.Adapters.Datenbank;
+using Biletado.Domain.Storey;
 using Microsoft.EntityFrameworkCore;
 
 namespace Biletado.Application.Services
@@ -98,9 +98,5 @@ namespace Biletado.Application.Services
                 return false;
             }
         }
-
-
-
-
     }
 }

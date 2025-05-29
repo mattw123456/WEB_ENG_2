@@ -1,10 +1,10 @@
-﻿using Biletado.Api.Adapters.Repositories;
-using Biletado.Api.Domain.Building;
-using Biletado.Api.Room;
-using Biletado.Api.Status;
-using Biletado.Api.Storey;
+﻿using Biletado.Application.Services;
+using Biletado.Domain.Building;
+using Biletado.Domain.Room;
+using Biletado.Domain.Status;
+using Biletado.Domain.Storey;
 
-namespace Biletado.Api.Api.Extensions
+namespace Biletado.Main.Extensions
 {
     public static class ServiceCollectionExtension
     {

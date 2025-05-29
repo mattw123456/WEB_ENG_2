@@ -5,6 +5,4 @@
         public StatusInformation GebeStatusInformationenZurueck();
         public StatusInformationHealth GebeHealthInformationenZurueck();
     }
-
-
 }

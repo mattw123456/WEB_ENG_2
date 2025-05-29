@@ -1,5 +1,5 @@
-﻿using Biletado.Api.Adapters.Database;
-using Microsoft.EntityFrameworkCore;
+﻿using Biletado.Adapters.Datenbank;
+using Biletado.Domain.Status;
 
 namespace Biletado.Application.Services
 {
