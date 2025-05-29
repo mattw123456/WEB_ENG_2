@@ -1,0 +1,37 @@
+﻿using Biletado.Domain.Storey;
+using Moq;
+
+namespace Biletado.Tests
+{
+    public class StoreyTests
+    {
+        private Mock<IStoreyService> _storeyServiceMock;
+
+        public StoreyTests()
+        {
+            _storeyServiceMock = new Mock<IStoreyService>();
+        }
+
+        [Fact]
+        public async Task CreateNewAsync_ShouldReturnStorey_WhenCreationSucceeds() {
+
+            // Arrange
+            var storeyId = Guid.NewGuid();
+            var buildingId = Guid.NewGuid();
+
+            var newStorey = new Storey {
+                id = storeyId,
+                name = "Test",
+                building_id = buildingId
+            };
+
+            _storeyServiceMock.Setup(service => service.CreateStoreyAsync(newStorey)).ReturnsAsync(newStorey);
+
+            // Act
+            var result = await _storeyServiceMock.Object.CreateStoreyAsync(newStorey);
+
+            // Assert
+            Assert.Equal(newStorey, result);
+        }
+    }
+}
