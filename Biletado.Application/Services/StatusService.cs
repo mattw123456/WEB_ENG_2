@@ -12,11 +12,11 @@ namespace Biletado.Application.Services
             _dbContext = dbContext;
         }
 
-        public StatusInformationHealth GebeHealthInformationenZurueck()
+        public HealthInformation GebeHealthInformationenZurueck()
         {
             var isDbConnected = _dbContext.Database.CanConnect();
 
-            var healthStatus = new StatusInformationHealth
+            var healthStatus = new HealthInformation
             {
                 live = true,
                 ready = isDbConnected,

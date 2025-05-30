@@ -3,6 +3,6 @@
     public interface IStatusService
     {
         public StatusInformation GebeStatusInformationenZurueck();
-        public StatusInformationHealth GebeHealthInformationenZurueck();
+        public HealthInformation GebeHealthInformationenZurueck();
     }
 }

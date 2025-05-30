@@ -37,5 +37,30 @@ namespace Biletado.Tests
             Assert.Equal(expectedStatusInformation.authors, result.authors);
             Assert.Equal(expectedStatusInformation.supportedApis, result.supportedApis);
         }
+        [Fact]
+        public void GetHealthInformation_ShouldReturnHealthInformation_WhenRepositoryReturnData()
+        {
+            //Arrange
+            Boolean live = true;
+            Boolean ready = true;
+            Boolean databases = true;
+
+            var expectedHealthInformation = new HealthInformation
+            {
+                live = live,
+                ready = ready,
+                databases = databases
+            };
+
+            //Act 
+            _statusServiceMock.Setup(service => service.GebeHealthInformationenZurueck()).Returns(expectedHealthInformation);
+
+            var result = _statusServiceMock.Object.GebeHealthInformationenZurueck();
+
+            Assert.NotNull(result);
+            Assert.Equal(expectedHealthInformation.live, result.live);
+            Assert.Equal(expectedHealthInformation.ready, result.ready);
+            Assert.Equal(expectedHealthInformation.databases, result.databases);
+        }
     }
 }

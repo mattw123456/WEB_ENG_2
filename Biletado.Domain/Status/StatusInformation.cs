@@ -5,7 +5,7 @@
         public required List<string> authors { get; set; }
         public required List<string> supportedApis { get; set; }
     }
-    public class StatusInformationHealth
+    public class HealthInformation
     {
         public bool live { get; set; }
         public bool ready { get; set; }
