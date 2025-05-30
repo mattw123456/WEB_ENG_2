@@ -98,7 +98,7 @@ namespace Biletado.Tests
             };
 
             _buildingServiceMock
-                .Setup(service => service.GetBuildingByIdAsync(buildingId))
+                .Setup(service => service.GsetBuildingByIdAsync(buildingId))
                 .ReturnsAsync(expectedBuilding);
 
             // Act
