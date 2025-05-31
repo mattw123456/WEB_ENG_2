@@ -1,4 +1,5 @@
 ﻿using Biletado.Application.Services;
+using Biletado.Application.Wrapper;
 using Biletado.Domain.Building;
 using Biletado.Domain.Room;
 using Biletado.Domain.Status;
@@ -15,6 +16,7 @@ namespace Biletado.Main.Extensions
             services.AddScoped<IBuildingService, BuildingService>();
             services.AddScoped<IStoreyService, StoreyService>();
             services.AddScoped<IRoomService, RoomService>();
+            services.Decorate<IRoomService, RoomServiceWrapper>();
         }
     }
 }
