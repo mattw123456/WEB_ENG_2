@@ -6,6 +6,24 @@ namespace Biletado.Main.Endpunkte
 {
     public static class BuildingEndpunkte
     {
+        private static async Task<IResult> HandleWithLogging(ILogger logger, string message, Func<Task<IResult>> action)
+        {
+            logger.LogInformation(message);
+            return await action();
+        }
+
+        private static IResult? ValidateBuilding(Building building)
+        {
+            if (building == null)
+                return Results.BadRequest("Building data is required.");
+
+            if (string.IsNullOrWhiteSpace(building.name))
+                return Results.BadRequest(new { Message = "Name is required." });
+
+            return null;
+        }
+
+
         public static void AddBuildingEndpunkte(this IEndpointRouteBuilder app)
         {
             app.MapGet(
@@ -27,17 +45,20 @@ namespace Biletado.Main.Endpunkte
                 .WithTags("Buildings");
 
             app.MapGet(
-                    "/api/v3/assets/buildings/{id}",
-                    async ([FromServices] IBuildingService service, Guid id, ILogger<BuildingService> logger) =>
-                    {
-                        logger.LogInformation("Fetching building with ID {id}", id);
-
-                        var building = await service.GetBuildingByIdAsync(id);
-                        return building is not null
-                            ? Results.Ok(building)
-                            : Results.NotFound(new { Message = "Building not found." });
-                    }
-                )
+                "/api/v3/assets/buildings/{id}",
+                async (IBuildingService service, Guid id, ILogger<BuildingService> logger) =>
+                    await HandleWithLogging(
+                        logger,
+                        $"Fetching building with ID {id}",
+                        async () =>
+                        {
+                            var building = await service.GetBuildingByIdAsync(id);
+                            return building is not null
+                                ? Results.Ok(building)
+                                : Results.NotFound(new { Message = "Building not found." });
+                        }
+                    )
+            )
                 .WithName("GetBuildingById")
                 .WithOpenApi()
                 .WithTags("Buildings");
@@ -52,11 +73,9 @@ namespace Biletado.Main.Endpunkte
                     {
                         logger.LogInformation("User creates a building: {@building}", building);
 
-                        if (building == null)
-                            return Results.BadRequest("Building data is required.");
-
-                        if (string.IsNullOrEmpty(building.name))
-                            return Results.BadRequest(new { Message = "Name is required." });
+                        var validationResult = ValidateBuilding(building);
+                        if (validationResult is not null)
+                            return validationResult;
 
                         // Weitere Validierungen können hier hinzugefügt werden...
 
