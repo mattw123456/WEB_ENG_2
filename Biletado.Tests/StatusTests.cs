@@ -40,7 +40,7 @@ namespace Biletado.Tests
         [Fact]
         public void GetHealthInformation_ShouldReturnHealthInformation_WhenRepositoryReturnData()
         {
-            //Arrange
+            // Arrange
             Boolean live = true;
             Boolean ready = true;
             Boolean databases = true;
@@ -52,11 +52,12 @@ namespace Biletado.Tests
                 databases = databases
             };
 
-            //Act 
             _statusServiceMock.Setup(service => service.GebeHealthInformationenZurueck()).Returns(expectedHealthInformation);
 
+            // Act 
             var result = _statusServiceMock.Object.GebeHealthInformationenZurueck();
 
+            // Assert
             Assert.NotNull(result);
             Assert.Equal(expectedHealthInformation.live, result.live);
             Assert.Equal(expectedHealthInformation.ready, result.ready);

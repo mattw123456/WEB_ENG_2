@@ -15,6 +15,12 @@
 
         // Optionales DateTime-Feld, da es nicht immer gesetzt wird
         public DateTime? deleted_at { get; set; }
+
+
+        public string GetFormattedAddress()
+        {
+            return $"{streetname} {housenumber}, {postalcode} {city}, {country_code}";
+        }
     }
 }
 

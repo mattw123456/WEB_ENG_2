@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.Xml.Linq;
-using Biletado.Domain.Building;
-using Biletado.Domain.Storey;
+﻿using Biletado.Domain.Building;
 using Moq;
 
 namespace Biletado.Tests
@@ -23,7 +20,7 @@ namespace Biletado.Tests
             var buildingId = Guid.NewGuid();
             string name = "building1";
             string streetname = "kingstreet";
-            String housenumber = "1";
+            string housenumber = "1";
             string country_code = "us";
             string postal_code = "12345";
             string city = "kingcity";
@@ -48,6 +45,7 @@ namespace Biletado.Tests
             // Assert
             Assert.Equal(newBuilding, result);
         }
+
         [Fact]
         public async Task GetAll_ShouldReturnBuilding_WhenCreationSucceeds()
         {
@@ -81,6 +79,7 @@ namespace Biletado.Tests
             // Assert
             Assert.Equal(newBuilding, result);
         }
+
         [Fact]
         public async Task GetBuildingByIdAsync_ShouldReturnBuilding_WhenBuildingExists()
         {
@@ -98,7 +97,7 @@ namespace Biletado.Tests
             };
 
             _buildingServiceMock
-                .Setup(service => service.GsetBuildingByIdAsync(buildingId))
+                .Setup(service => service.GetBuildingByIdAsync(buildingId))
                 .ReturnsAsync(expectedBuilding);
 
             // Act
@@ -109,6 +108,7 @@ namespace Biletado.Tests
             Assert.Equal(expectedBuilding.id, result.id);
             Assert.Equal(expectedBuilding.name, result.name);
         }
+
         [Fact]
         public async Task DeleteBuildingAsync_ShouldReturnFalse_WhenBuildingDoesNotExist()
         {
@@ -127,9 +127,34 @@ namespace Biletado.Tests
             Assert.Equal("Building not found", result.ErrorMessage);
         }
 
+        [Fact]
+        public void GetFormattedAddress_ShouldReturnFormattedAddress()
+        {
+            // Arrange
+            var city = "Test City";
+            var country_code = "DE";
+            var houseNumber = "42";
+            var streetName = "Main St";
+            var postalCode = "12345";
 
+            var expectedAddress = $"{streetName} {houseNumber}, {postalCode} {city}, {country_code}";
+            var building = new Building
+            {
+                id = Guid.NewGuid(),
+                name = "Test Building",
+                streetname = streetName,
+                housenumber = houseNumber,
+                postalcode = postalCode,
+                city = city,
+                country_code = country_code
+            };
 
+            // Act
+            var result = building.GetFormattedAddress();
 
-
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(expectedAddress, result);
+        }
     }
 }

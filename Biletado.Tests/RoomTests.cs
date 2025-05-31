@@ -37,6 +37,7 @@ namespace Biletado.Tests
             // Assert
             Assert.Equal(newRoom, result);
         }
+
         [Fact]
         public async Task GetAllRoomsAsync_ShouldReturnListOfRooms_ForGivenStoreyId()
         {
@@ -45,15 +46,13 @@ namespace Biletado.Tests
             var roomId = Guid.NewGuid();
 
             var expectedRooms = new List<Room> {
-
-
-        new Room
-        {
-            id = roomId,
-            name = "TestRoom",
-            storey_id = storeyId
-        }
-                };
+                new Room
+                    {
+                    id = roomId,
+                    name = "TestRoom",
+                    storey_id = storeyId
+                    }
+            };
 
 
             _roomServiceMock
@@ -72,7 +71,5 @@ namespace Biletado.Tests
 
             _roomServiceMock.Verify(s => s.GetAllRoomsAsync(storeyId, false), Times.Once);
         }
-
-
     }
 }
